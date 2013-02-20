@@ -14,7 +14,7 @@ process_io :: process_io ( int argc , char *argv[] )
 	char c;
 	optind = 1;
 	int option_index = 0;
-	if ( argc < 3 )
+	if ( argc < 2 )
 	{
 		
 		print_usage ( argv[0] );
@@ -38,7 +38,7 @@ process_io :: process_io ( int argc , char *argv[] )
 				sscanf ( optarg , "%d" , &width );
 				break;
 			case 'P' : 
-				sscanf ( optarg , "%d" , &percent );
+				sscanf ( optarg , "%f" , &percent );
 				break;
 			case 'd' : 
 				if ( dir.dir_files ( files , optarg ) == -1 )

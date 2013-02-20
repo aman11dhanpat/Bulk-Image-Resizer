@@ -1,5 +1,5 @@
-#ifndef PROCESS_IO_H
-#define PROCESS_IO_H
+#ifndef BIR_PROCESS_IO_H
+#define BIR_PROCESS_IO_H
 
 #include <getopt.h>
 #include <vector>
@@ -21,7 +21,7 @@ class process_io
 		std :: vector < std :: string > files;
 		int height;
 		int width;
-		int percent;
+		float percent;
 };
 
 #endif
