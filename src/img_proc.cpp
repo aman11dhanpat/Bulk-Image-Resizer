@@ -1,3 +1,4 @@
+#include <iostream>
 #include "img_proc.h"
 
 void img_proc :: show ( string str )
@@ -10,6 +11,8 @@ void img_proc :: show ( string str )
 
 bool img_proc :: resize_and_save ( string str )
 {
+	string temp;
+	size_t pos;
 	image = imread ( str.c_str ( ) , CV_LOAD_IMAGE_COLOR );
 	if ( percent != 0 )
 	{
@@ -18,5 +21,13 @@ bool img_proc :: resize_and_save ( string str )
 	}
 	dst = Mat (Size(width,height),CV_8UC3);
 	cv::resize ( image, dst, dst.size(), 0, 0, INTER_LANCZOS4 );
-	imwrite ( ( "Converted/" + str ).c_str ( ) , dst ); 
+	pos = str.find_last_of ( "/" );
+	temp = str;
+	if ( pos != std :: string :: npos )
+	{
+		temp.assign ( str.begin () + pos + 1 , str.end( ) );
+	}
+	temp = "Convert/" + temp;
+	imwrite ( temp.c_str ( ) , dst ); 
+	std :: cout << temp;
 }
