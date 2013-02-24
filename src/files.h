@@ -4,8 +4,11 @@
 #include <dirent.h>
 #include <errno.h>
 #include <vector>
+#include <map>
+#include <utility>
 #include <string>
 #include <cstring>
+#include <cstdio>
 
 class read_dir
 {
@@ -14,7 +17,9 @@ class read_dir
 		int dir_files ( std :: vector < std :: string > & , const char * );
 	private :
 		dirent * entry;
+		int check_extention ( const char * );
 		DIR * dir;
+		std :: map < std :: string , int > allowed; 
 };
 
 #endif

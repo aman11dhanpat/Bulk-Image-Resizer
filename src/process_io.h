@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <cstring>
 #include <errno.h>
+#include <unistd.h>
+#include <sys/stat.h>
 #include "files.h"
 
 class process_io

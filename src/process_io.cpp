@@ -61,6 +61,12 @@ process_io :: process_io ( int argc , char *argv[] )
 		//printf ( "%d %d %d\n" , percent, height, width );
 		exit ( 2 );
 	}
+	if ( ( mkdir ( "Converted" , 0777 ) != 0 ) && ( errno != EEXIST ) )
+	{
+		fprintf ( stderr , "Cannot create a new directory in PWD, please check the permissions.\nError : %s\n" , strerror ( errno ) );
+	}
+	else
+		printf ( "Saving files in ./Converted/\n" );
 }
 
 inline void process_io :: print_usage ( char * prog )
@@ -74,7 +80,7 @@ inline void process_io :: print_usage ( char * prog )
 		" -P, --percent=PIXEL_VALUE\t : scales the height and width according to their present dimentions.\n"
 		" -d, --dir=/PATH/TO/INPUT/IMAGE/DIRECTORY\n"
 		"\n"
-		"All the converted files will be saved in \"Convert\" folder, previous files will be over written without any prior notice.\n"
+		"All the converted files will be saved in \"Converted\" folder, previous files will be over written without any prior notice.\n"
 		"\n"
 		"Please either use height-width combination or percent. Don't use both at same time.\n");
 }
